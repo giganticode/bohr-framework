@@ -4,7 +4,7 @@ from pprint import pprint
 
 import click
 
-from bohr import pipeline
+from bohr import pipeline, version
 from bohr.config import load_config
 from bohr.pipeline.dvc import add_all_tasks_to_dvc_pipeline
 from bohr.pipeline.parse_labels import parse_label
@@ -14,6 +14,7 @@ CONTEXT_SETTINGS = dict(help_option_names=["-h", "--help"])
 
 
 @click.group(context_settings=CONTEXT_SETTINGS)
+@click.version_option(version())
 def bohr():
     pass
 
@@ -32,9 +33,9 @@ def parse_labels():
 
 
 @bohr.command()
-@click.argument('task')
-@click.argument('dataset')
-@click.option('--debug', is_flag=True)
+@click.argument("task")
+@click.argument("dataset")
+@click.option("--debug", is_flag=True)
 def label_dataset(task: str, dataset: str, debug: bool):
     config = load_config()
     pipeline.label_dataset(task, dataset, config, debug)
@@ -58,8 +59,6 @@ def train_label_model(task: str):
     config = load_config()
 
     stats = pipeline.train_label_model(task, config)
-    with open(
-            config.metrics_path / task / "label_model_metrics.json", "w"
-    ) as f:
+    with open(config.metrics_path / task / "label_model_metrics.json", "w") as f:
         json.dump(stats, f)
     pprint(stats)
