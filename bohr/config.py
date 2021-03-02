@@ -157,8 +157,14 @@ labeled_data_dir='labeled-data', data_dir='data', labels_dir='labels'))
 
     @staticmethod
     def load(project_root: Path) -> "Config":
-        with open(project_root / ".bohr" / "local.config") as f:
-            software_path = toml.load(f)["core"]["software_path"]
+        try:
+            with open(project_root / ".bohr" / "local.config") as f:
+                software_path = toml.load(f)["core"]["software_path"]
+        except FileNotFoundError:
+            raise EnvironmentError(
+                f"Unable to load `software_path` property from config.\n"
+                f"Please make sure to run: `bohr config software_path <software_path>."
+            )
         with open(project_root / "bohr.json") as f:
             return jsons.loads(
                 f.read(), Config, project_root=project_root, software_path=software_path
