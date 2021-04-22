@@ -114,9 +114,9 @@
     },
     "heuristics": {
         "heuristics/smells.py": "8a0ce66efaed67530523be6b8f95ccf5",
-        "heuristics/bugginess/file_heuristics.py": "0bca467480b55b1aa13178d16207a3ab",
-        "heuristics/bugginess/issue_heuristics.py": "dabc35aa22d090f19dcb30503a56cb46",
-        "heuristics/bugginess/main_heurstics.py": "b277590dff0b3e86855c8017a83f4b6d",
+        "heuristics/bugginess/file_heuristics.py": "2e0c8e404b7d54d6405a7ccbb2ca96be",
+        "heuristics/bugginess/issue_heuristics.py": "d96be05f3d1bbceac9369de551f020a2",
+        "heuristics/bugginess/main_heurstics.py": "b798abc92c952d68f7517bec5a8f0ab4",
         "heuristics/bugginess/tool_heuristics.py": "844a3d49f4b06f24f0eab2fe4dbc8f31"
     },
     "manual_stages": {}
